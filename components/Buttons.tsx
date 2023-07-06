@@ -9,11 +9,15 @@ export function CreateButton() {
   const [disabled, setDisabled] = useState(false);
 
   async function createNewRoom() {
+    if (disabled) return;
     setDisabled(true);
+
     const room: Room = await fetch("http://localhost:3000/api/room", {
       method: "POST",
     }).then((res) => res.json());
     push(`/room/${room.id}`);
+
+    setDisabled(false);
   }
 
   return (
