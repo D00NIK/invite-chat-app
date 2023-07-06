@@ -1,20 +1,16 @@
+"use client";
+import fetcher from "@/lib/fetcher";
 import { Room } from "@prisma/client";
+import useSWR from "swr";
 
 interface Props {
   params: { id: string };
 }
 
-export default async function Room({ params }: Props) {
-  const room: Room = await fetch(
-    `http://localhost:3000/api/room/${params.id}`
-  ).then((res) => res.json());
+export default function Room({ params }: Props) {
+  const { data, error, isLoading } = useSWR(`/api/room/${params.id}`, fetcher);
 
-  if (!room)
-    return (
-      <h1 className="text-center text-4xl text-red-500">
-        This room does not exist.
-      </h1>
-    );
-
-  return <div>{room?.id}</div>;
+  if (error) return <h1>error</h1>;
+  if (data) return <h1>data</h1>;
+  return <h1>isLoading</h1>;
 }
