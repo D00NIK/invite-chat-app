@@ -13,7 +13,7 @@ export function CreateButton() {
       className={
         "ml-3" +
         (isPending
-          ? " btn-disabled"
+          ? " h-5 btn-disabled"
           : " outline outline-1 btn-outline btn-secondary")
       }
       disabled={isPending}
@@ -24,7 +24,7 @@ export function CreateButton() {
         });
       }}
     >
-      CREATE
+      {isPending ? <span className="loading loading-spinner"></span> : "CREATE"}
     </button>
   );
 }
