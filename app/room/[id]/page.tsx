@@ -40,13 +40,9 @@ export default async function Room({ params }: Props) {
       ) : (
         <div className="flex flex-col items-center pb-12">
           {room.messages.map((msg) => (
-            <textarea
-              value={msg}
-              readOnly={true}
-              maxLength={500}
-              wrap="soft"
-              className="resize-none bg-base-300 mb-2 p-2 rounded-lg"
-            />
+            <div className="rounded p-1 my-2 max-w-[80%] break-words bg-primary text-white">
+              {msg}
+            </div>
           ))}
         </div>
       )}
@@ -61,7 +57,7 @@ export default async function Room({ params }: Props) {
           placeholder="Type here..."
         />
         <button
-          className="btn btn-primary box-border h-full ml-1"
+          className="btn btn-secondary box-border h-full ml-1"
           type="submit"
         >
           Send
