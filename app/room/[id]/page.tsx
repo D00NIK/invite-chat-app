@@ -47,7 +47,7 @@ export default async function Room({ params }: Props) {
         </div>
       )}
       <form
-        className="fixed h-12 bottom-0 w-full flex justify-center"
+        className="fixed -z-[1] h-12 bottom-0 w-full flex justify-center"
         action={handleSubmit}
       >
         <input
